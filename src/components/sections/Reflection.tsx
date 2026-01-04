@@ -51,10 +51,9 @@ export default function Reflection() {
             </h3>
             <p className="text-gray-300 text-lg leading-relaxed max-w-xl">
               "Komitmen aku nggak berhenti di sini. Aku bakal terus{" "}
-              <b>refactor</b>
-              diri sendiri, <b>fix bug</b> (bad habit), dan jadi{" "}
-              <b>developer</b>
-              kehidupan yang berdampak nyata."
+              <b>refactor </b>
+              diri sendiri, <b>fix </b> bad habit, dan jadi <b>developer </b>
+              yang berdampak nyata."
             </p>
           </div>
         </div>
