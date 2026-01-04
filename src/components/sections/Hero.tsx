@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Github, Linkedin, Instagram, Twitter } from "lucide-react";
+import { Github, Linkedin, Instagram, Twitter, Mail } from "lucide-react";
 
 const TYPING_SPEED = 50;
 const DELETING_SPEED = 30;
@@ -55,18 +55,36 @@ export default function Hero() {
         <div className="space-y-6 order-2 lg:order-1 z-10">
           {/* Social / Contact Links (Top) */}
           <div className="flex items-center gap-6 mb-4">
-             <a href="#" className="text-white hover:text-accent transition-transform hover:scale-110 duration-300">
-               <Github size={24} />
-             </a>
-             <a href="#" className="text-white hover:text-accent transition-transform hover:scale-110 duration-300">
-               <Linkedin size={24} />
-             </a>
-             <a href="#" className="text-white hover:text-accent transition-transform hover:scale-110 duration-300">
-               <Instagram size={24} />
-             </a>
-             <a href="#" className="text-white hover:text-accent transition-transform hover:scale-110 duration-300">
-               <Twitter size={24} />
-             </a>
+            <a
+              href="https://github.com/FadhilHere"
+              className="text-white hover:text-accent transition-transform hover:scale-110 duration-300"
+            >
+              <Github size={24} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/fadhil-parmata-2599a0310/"
+              className="text-white hover:text-accent transition-transform hover:scale-110 duration-300"
+            >
+              <Linkedin size={24} />
+            </a>
+            <a
+              href="https://www.instagram.com/fadhiilp_/"
+              className="text-white hover:text-accent transition-transform hover:scale-110 duration-300"
+            >
+              <Instagram size={24} />
+            </a>
+            <a
+              href="https://x.com/antartarka"
+              className="text-white hover:text-accent transition-transform hover:scale-110 duration-300"
+            >
+              <Twitter size={24} />
+            </a>
+            <a
+              href="mailto:fadhilmain29@gmail.com"
+              className="text-white hover:text-accent transition-transform hover:scale-110 duration-300"
+            >
+              <Mail size={24} />
+            </a>
           </div>
 
           <div className="space-y-4">
@@ -90,26 +108,26 @@ export default function Hero() {
         {/* Right Column: Image */}
         <div className="order-1 lg:order-2 flex justify-center lg:justify-end relative z-10">
           <div className="group relative w-[280px] h-[280px] md:w-[400px] md:h-[400px]">
-             {/* Creating the 'Creative' Image Card */}
-             <div className="absolute inset-0 bg-accent/20 rounded-3xl rotate-6 group-hover:rotate-12 transition-transform duration-500 blur-xl opacity-0 group-hover:opacity-100"></div>
-             
-             <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white/10 shadow-2xl transition-all duration-500 rotate-3 group-hover:rotate-0 group-hover:scale-105">
-                <Image 
-                  src="/DSC08744.jpg" 
-                  alt="Fadhil" 
-                  fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                
-                {/* Overlay Text on Hover (Optional creative touch) */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                   {/* <span className="text-white font-serif italic text-xl tracking-wider">Manner Matters</span> */}
-                </div>
-             </div>
+            {/* Creating the 'Creative' Image Card */}
+            <div className="absolute inset-0 bg-accent/20 rounded-3xl rotate-6 group-hover:rotate-12 transition-transform duration-500 blur-xl opacity-0 group-hover:opacity-100"></div>
+
+            <div className="relative w-full h-full rounded-3xl overflow-hidden border-4 border-white/10 shadow-2xl transition-all duration-500 rotate-3 group-hover:rotate-0 group-hover:scale-105">
+              <Image
+                src="/DSC08744.jpg"
+                alt="Fadhil"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+
+              {/* Overlay Text on Hover (Optional creative touch) */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                {/* <span className="text-white font-serif italic text-xl tracking-wider">Manner Matters</span> */}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      
+
       {/* Background Decorative Elements */}
       <div className="absolute top-1/4 left-0 w-64 h-64 bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />

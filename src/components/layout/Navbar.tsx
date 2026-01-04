@@ -35,8 +35,15 @@ export default function Navbar() {
         })}
       </div>
 
-      {/* Right Side: Empty for now or Call to Action */}
-      <div className="flex items-center gap-4"></div>
+      {/* Right Side: Call to Action */}
+      <div className="flex items-center gap-4">
+        <a
+          href="mailto:fadhilmain29@gmail.com"
+          className="hidden md:inline-block px-6 py-2 rounded-full bg-white text-black font-medium text-sm hover:bg-accent hover:text-black transition-colors"
+        >
+          Hire Me!
+        </a>
+      </div>
     </nav>
   );
 }
