@@ -8,19 +8,21 @@ import Communication from "@/components/sections/Communication";
 import PublicSpeaking from "@/components/sections/PublicSpeaking";
 import GoalSetting from "@/components/sections/GoalSetting";
 import Reflection from "@/components/sections/Reflection";
+import ParticleField from "@/components/ui/ParticleField";
 
 export default function Home() {
   return (
-    <main className="flex flex-col w-full bg-background text-foreground overflow-x-hidden selection:bg-accent selection:text-black">
+    <main className="relative flex flex-col w-full bg-background text-foreground overflow-x-hidden selection:bg-accent selection:text-black">
+      <ParticleField />
       <Navbar />
       <Hero />
-      <Foreword />
+      {/* <Foreword /> */}
       <WhoAmI />
-      <PersonalBranding />
-      <AttitudeEthics />
-      <Communication />
-      <PublicSpeaking />
-      <GoalSetting />
+      {/* <PersonalBranding /> */}
+      {/* <AttitudeEthics /> */}
+      {/* <Communication /> */}
+      {/* <PublicSpeaking /> */}
+      {/* <GoalSetting /> */}
       <Reflection />
     </main>
   );

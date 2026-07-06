@@ -1,76 +1,83 @@
-export default function WhoAmI() {
+import { Globe, Users, Briefcase, GitCommit } from "lucide-react";
+
+async function getGithubCommitCount() {
+  try {
+    const res = await fetch("https://api.github.com/search/commits?q=author:FadhilHere", {
+      headers: {
+        "User-Agent": "FadhilHere-Portfolio",
+        "Accept": "application/vnd.github+json"
+      },
+      next: { revalidate: 3600 } // cache for 1 hour
+    });
+    if (!res.ok) throw new Error("Github fetch failed");
+    const data = await res.json();
+    return data.total_count || 449;
+  } catch (error) {
+    return 449; // fallback count
+  }
+}
+
+export default async function WhoAmI() {
+  const commitCount = await getGithubCommitCount();
+
   return (
-    <section className="min-h-screen py-20 px-6 relative overflow-hidden bg-background">
-      <div className="max-w-6xl mx-auto space-y-16">
-        
-        {/* Title */}
-        <div className="flex flex-col lg:flex-row justify-between items-end border-b border-white/10 pb-8">
-            <h2 className="text-5xl md:text-7xl font-serif text-white">
-                WHO <span className="text-accent italic">AM I?</span>
-            </h2>
-            <div className="max-w-md text-right mt-4 lg:mt-0">
-                <p className="font-sans uppercase tracking-widest text-sm text-gray-500">
-                    Kepribadian & Konsep Diri
-                </p>
-            </div>
-        </div>
+    <section className="py-12 px-6 relative overflow-hidden bg-transparent">
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Dashboard Grid (4 columns on desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        {/* Personality Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-                <h3 className="text-2xl font-serif text-white">The Character Build</h3>
-                <p className="text-gray-400 leading-relaxed text-lg">
-                    Aku mendefinisikan diri aku sebagai <b>"System Thinker"</b>. Aku suka melihat segala sesuatu sebagai sistem yang bisa di-"optimize", termasuk diri sendiri. Tapi tenang, aku bukan robot, kok. Aku percaya kalau <span className="text-white italic">empathy</span> itu adalah fitur paling mahal di manusia.
-                </p>
-                <div className="flex gap-4">
-                    {['Ambivert', 'Tech-Savvy', 'Detail-Oriented', 'Cat-Lover'].map((trait) => (
-                         <span key={trait} className="px-4 py-2 border border-accent/30 rounded-full text-accent text-sm uppercase tracking-wider bg-accent/5">
-                             {trait}
-                         </span>
-                    ))}
-                </div>
+          {/* Card 1: Projects Deployed */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-emerald-500/40 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between min-h-[130px]">
+            <div className="flex justify-between items-start">
+              <span className="text-xs uppercase tracking-widest text-gray-400 font-sans font-medium">
+                Projects Deployed
+              </span>
+              <Globe className="text-emerald-500 w-5 h-5 shrink-0" />
             </div>
-            
-            {/* Visual element for stats/traits */}
-            <div className="bg-white/5 p-8 rounded-lg border border-white/10">
-                 <h4 className="text-xl font-serif mb-6 text-center text-white">Core System Values</h4>
-                 <ul className="space-y-4">
-                    {[
-                        { val: "Firewall", desc: "Anti bocor, anti manipulasi. Jujur itu harga mati." },
-                        { val: "Update", desc: "Selalu siap install patch ilmu baru tiap hari." },
-                        { val: "Error Handling", desc: "Kalau gagal (crash), ya restart lagi lebih kuat." }
-                    ].map((item, idx) => (
-                        <li key={idx} className="flex justify-between items-center border-b border-white/10 pb-2">
-                            <span className="font-bold text-gray-200">{item.val}</span>
-                            <span className="text-sm text-gray-500 italic">{item.desc}</span>
-                        </li>
-                    ))}
-                 </ul>
-            </div>
-        </div>
+            <h3 className="text-3xl md:text-4xl font-serif font-bold text-white group-hover:text-emerald-400 transition-colors mt-4">
+              3 Live
+            </h3>
+          </div>
 
-        {/* Strength & Area of Improvement */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 bg-white/5 border-l-4 border-green-500/50">
-                <h4 className="text-2xl font-serif mb-4 flex items-center gap-2 text-white">
-                    <span className="text-green-500 text-sm">01</span> Main Buffs
-                </h4>
-                <ul className="list-disc list-inside text-gray-400 space-y-2">
-                    <li><b>High Logic:</b> Bisa mecahin masalah kompleks jadi langkah simpel.</li>
-                    <li><b>Adaptive:</b> Cepet banget adaptasi sama "framework" atau lingkungan baru.</li>
-                    <li><b>Active Listener:</b> Lebih suka dengerin dulu baru "coding" solusi.</li>
-                </ul>
+          {/* Card 2: Active Users */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-blue-400/40 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between min-h-[130px]">
+            <div className="flex justify-between items-start">
+              <span className="text-xs uppercase tracking-widest text-gray-400 font-sans font-medium">
+                Users
+              </span>
+              <Users className="text-blue-400 w-5 h-5 shrink-0" />
             </div>
-            <div className="p-8 bg-white/5 border-l-4 border-accent/50">
-                <h4 className="text-2xl font-serif mb-4 flex items-center gap-2 text-white">
-                    <span className="text-accent text-sm">02</span> Patch Coming Soon (Pengembangan)
-                </h4>
-                <ul className="list-disc list-inside text-gray-400 space-y-2">
-                    <li><b>Public Speaking:</b> Masih suka nervous kalo lagi crowded.</li>
-                    <li><b>Overthinking:</b> Kadang suka mikirin skenario buruk yang belum tentu kejadian.</li>
-                    <li><b>Delegation:</b> Kadang masih suka solo rank, lagi belajar buat percaya tim.</li>
-                </ul>
+            <h3 className="text-3xl md:text-4xl font-serif font-bold text-white group-hover:text-blue-400 transition-colors mt-4">
+              300++
+            </h3>
+          </div>
+
+          {/* Card 3: Internships Taken */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-amber-400/40 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between min-h-[130px]">
+            <div className="flex justify-between items-start">
+              <span className="text-xs uppercase tracking-widest text-gray-400 font-sans font-medium">
+                Internships Taken
+              </span>
+              <Briefcase className="text-amber-400 w-5 h-5 shrink-0" />
             </div>
+            <h3 className="text-2xl md:text-3xl font-serif font-bold text-white group-hover:text-amber-400 transition-colors mt-4">
+              2 Places
+            </h3>
+          </div>
+
+          {/* Card 4: GitHub Commits */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-violet-400/40 hover:bg-white/10 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between min-h-[130px]">
+            <div className="flex justify-between items-start">
+              <span className="text-xs uppercase tracking-widest text-gray-400 font-sans font-medium">
+                GitHub Commits
+              </span>
+              <GitCommit className="text-violet-400 w-5 h-5 shrink-0" />
+            </div>
+            <h3 className="text-3xl md:text-4xl font-serif font-bold text-white group-hover:text-violet-400 transition-colors mt-4">
+              {commitCount}
+            </h3>
+          </div>
+
         </div>
       </div>
     </section>

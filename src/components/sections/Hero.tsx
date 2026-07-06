@@ -28,7 +28,7 @@ export default function Hero() {
       setText(
         isDeleting
           ? fullText.substring(0, text.length - 1)
-          : fullText.substring(0, text.length + 1)
+          : fullText.substring(0, text.length + 1),
       );
 
       setTypingSpeed(isDeleting ? DELETING_SPEED : TYPING_SPEED);
@@ -48,7 +48,7 @@ export default function Hero() {
   return (
     <section
       id="about"
-      className="relative h-screen flex flex-col justify-center px-6 overflow-hidden bg-background"
+      className="relative h-screen flex flex-col justify-center px-6 overflow-hidden bg-transparent"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left Column: Content */}
@@ -88,17 +88,17 @@ export default function Hero() {
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-8xl font-serif font-bold leading-none tracking-tight">
+            <h1 className="text-5xl md:text-8xl font-serif font-bold leading-none tracking-tight text-white">
               Hi, I’m <span className="text-accent">Fadhil.</span>
             </h1>
             <p className="text-lg md:text-2xl text-muted-foreground font-light">
-              Student | Information System at Politeknik Caltex Riau
+              Fresh Graduate | Information System @ Politeknik Caltex Riau
             </p>
           </div>
 
           {/* Typewriter Area */}
           <div className="min-h-[96px] mt-2 flex items-start">
-            <h2 className="text-2xl md:text-4xl font-bold leading-tight">
+            <h2 className="text-2xl md:text-4xl font-bold leading-tight text-white">
               {text}
               <span className="animate-blink ml-1 border-r-4 border-accent h-[1em] inline-block align-middle"></span>
             </h2>
@@ -117,6 +117,7 @@ export default function Hero() {
                 alt="Fadhil"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
+                priority
               />
 
               {/* Overlay Text on Hover (Optional creative touch) */}

@@ -106,6 +106,19 @@ const PROJECTS: Project[] = [
     image: "/porto_6_fix.png", // Placeholder
     links: { github: "https://github.com/FadhilHere/food-classification" },
   },
+  {
+    id: 7,
+    title: "Sistem Informasi RPL PCR",
+    category: "Web Development",
+    description:
+      "A production-grade Recognition of Prior Learning (RPL) system built with Laravel and Livewire, supporting 5 user roles, live at rpl.pocari.id.",
+    techStack: ["Laravel", "Livewire", "MySQL", "Tailwind CSS"],
+    image: "/porto_7_fix.png",
+    links: {
+      github: "https://github.com/FadhilHere/RPL-PCR",
+      demo: "https://rpl.pocari.id",
+    },
+  },
 ];
 
 export default function ProjectsPage() {
