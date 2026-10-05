@@ -1,0 +1,198 @@
+@import 'tailwindcss';
+@import 'lenis/dist/lenis.css';
+
+@theme {
+  /* Paper & ink */
+  --color-paper: #f4f1ea;
+  --color-cream: #fffcf5;
+  --color-ink: #1a1830;
+  --color-muted: #57536e;
+  --color-line: rgb(26 24 48 / 0.16);
+
+  /* Brutal accents */
+  --color-indigo: #3b32f0;
+  --color-tomato: #ff5b2e;
+
+  /* Section pastels */
+  --color-lavender: #dcd3ff;
+  --color-butter: #ffedaa;
+  --color-mint: #cdefd9;
+  --color-peach: #ffd9c7;
+  --color-sky: #d2e5ff;
+
+  --font-display: 'Anton', Impact, 'Arial Narrow', sans-serif;
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html.is-locked,
+  html.is-locked body {
+    overflow: hidden;
+  }
+  /* No background on body: a body background paints above negative z-index
+     layers, which would hide every section's colour and curtain. The paper
+     colour lives on <html> (the canvas background) instead. */
+  body {
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-indigo);
+    color: var(--color-paper);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-indigo);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 3rem);
+  }
+
+  /* Anton is already heavy and condensed — keep it tight. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 0.86;
+    letter-spacing: -0.005em;
+  }
+
+  .sticker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid var(--color-ink);
+    border-radius: 999px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--color-cream);
+    box-shadow: 3px 3px 0 var(--color-ink);
+    white-space: nowrap;
+  }
+
+  .card {
+    background: var(--color-cream);
+    border: 2px solid var(--color-ink);
+    border-radius: 1.25rem;
+    box-shadow: 6px 6px 0 var(--color-ink);
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    border: 1.5px solid var(--color-ink);
+    border-radius: 999px;
+    padding: 0.15rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 2px solid var(--color-ink);
+    border-radius: 999px;
+    padding: 0.8rem 1.35rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    box-shadow: 4px 4px 0 var(--color-ink);
+    transition:
+      transform 0.25s var(--ease-out-expo),
+      box-shadow 0.25s var(--ease-out-expo),
+      background-color 0.25s;
+  }
+  .btn:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-ink);
+  }
+  .btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--color-ink);
+  }
+  .btn-primary {
+    background: var(--color-indigo);
+    color: var(--color-paper);
+  }
+  .btn-accent {
+    background: var(--color-tomato);
+  }
+
+  /* Printed halftone dots, coloured by currentColor. */
+  .halftone {
+    background-image: radial-gradient(circle, currentColor 1.3px, transparent 1.7px);
+    background-size: 13px 13px;
+  }
+
+  /* SplitText line masks need a little room for descenders. */
+  .split-line {
+    padding-bottom: 0.06em;
+    margin-bottom: -0.06em;
+  }
+}
+
+/* Risograph-style paper grain over everything. */
+.grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .09 0 0 0 0 .19 0 0 0 1.6 -.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.9s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  17% { transform: translate(-4%, 3%); }
+  33% { transform: translate(3%, -5%); }
+  50% { transform: translate(-6%, -2%); }
+  67% { transform: translate(5%, 4%); }
+  83% { transform: translate(-2%, 6%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
