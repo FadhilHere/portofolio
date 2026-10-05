@@ -60,9 +60,12 @@ export function Nav() {
         gsap.to(el, { autoAlpha: 0, scale: 0.6, duration: 0.3 })
         return
       }
+      // Measure the <li>: it is `relative`, so the link's own offsetLeft is
+      // always 0. The <li>'s offset is relative to the <ul>, same as the pill.
+      const item = target.parentElement as HTMLElement
       gsap.to(el, {
-        x: target.offsetLeft,
-        width: target.offsetWidth,
+        x: item.offsetLeft,
+        width: item.offsetWidth,
         autoAlpha: 1,
         scale: 1,
         duration: reducedMotion ? 0 : 0.6,

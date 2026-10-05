@@ -193,16 +193,22 @@ export const achievements = [
     link: { label: 'doi:10.25077/TEKNOSI.v12i2.2026.377-385', href: 'https://doi.org/10.25077/TEKNOSI.v12i2.2026.377-385' },
   },
   {
-    title: 'Beasiswa Prestasi Pemerintah Provinsi Riau',
-    org: 'Riau Provincial Government',
-    year: '2023',
-    detail: 'Merit scholarship awarded to high-achieving students.',
+    title: 'Trusted with lecturer & freelance projects',
+    org: 'Lecturers and freelance clients',
+    year: '2025',
+    detail: 'Trusted to build projects commissioned by lecturers as well as freelance clients.',
   },
   {
     title: 'Hackfest 2024 — Google Developer Student Club',
     org: 'GDSC Hackathon',
     year: '2024',
     detail: 'Competed in a hackathon focused on the Sustainable Development Goals.',
+  },
+  {
+    title: 'Beasiswa Prestasi Pemerintah Provinsi Riau',
+    org: 'Riau Provincial Government',
+    year: '2023',
+    detail: 'Merit scholarship awarded to high-achieving students.',
   },
 ]
 

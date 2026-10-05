@@ -191,7 +191,7 @@ export function Projects() {
               data-filter
               onClick={() => choose(f)}
               aria-pressed={filter === f}
-              className={`rounded-full border-2 border-ink px-4 py-2 text-sm font-bold transition-all duration-200 ${
+              className={`rounded-full border-2 border-ink px-4 py-2 text-sm font-bold transition-[background-color,color,box-shadow,translate] duration-200 ${
                 filter === f
                   ? 'translate-x-[2px] translate-y-[2px] bg-indigo text-paper shadow-[1px_1px_0_var(--color-ink)]'
                   : 'bg-cream shadow-[3px_3px_0_var(--color-ink)] hover:bg-butter'

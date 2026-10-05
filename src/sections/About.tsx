@@ -55,23 +55,35 @@ export function About() {
         })
       })
 
-      // Cards get tossed onto the page at slightly different angles.
-      gsap.from('[data-stat]', {
-        y: 120,
-        rotate: (i) => [-8, 6, -5, 9][i % 4],
-        autoAlpha: 0,
-        duration: 1.1,
-        ease: 'back.out(1.4)',
-        stagger: 0.1,
-        scrollTrigger: { trigger: '[data-stats]', start: 'top 85%' },
-      })
-      gsap.from('[data-edu]', {
-        y: 60,
-        autoAlpha: 0,
-        duration: 1,
-        ease: 'expo.out',
-        scrollTrigger: { trigger: '[data-edu]', start: 'top 90%' },
-      })
+      // Cards get tossed onto the page at slightly different angles. Explicit
+      // end values + clearProps guarantee they always land flat, whatever
+      // happens mid-flight (refreshes, re-renders).
+      gsap.fromTo(
+        '[data-stat]',
+        { y: 120, rotate: (i) => [-8, 6, -5, 9][i % 4], autoAlpha: 0 },
+        {
+          y: 0,
+          rotate: 0,
+          autoAlpha: 1,
+          duration: 1.1,
+          ease: 'back.out(1.4)',
+          stagger: 0.1,
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: '[data-stats]', start: 'top 85%', once: true },
+        },
+      )
+      gsap.fromTo(
+        '[data-edu]',
+        { y: 60, autoAlpha: 0 },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 1,
+          ease: 'expo.out',
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: '[data-edu]', start: 'top 90%', once: true },
+        },
+      )
     },
     { scope: root },
   )
@@ -98,20 +110,22 @@ export function About() {
 
         <div data-stats className="mt-24 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, i) => (
-            <div
-              key={s.label}
-              data-stat
-              className={`card flex flex-col justify-between gap-10 p-6 transition-transform duration-300 hover:-translate-y-1.5 ${CARD_STYLES[i % 4]}`}
-            >
-              <span className="text-xs font-extrabold tracking-[0.08em] uppercase opacity-80">{s.note}</span>
-              <div>
-                <div className="display text-7xl tabular-nums">
-                  <span data-count={s.value} data-decimals={s.decimals}>
-                    {format(s.value, s.decimals)}
-                  </span>
-                  {s.suffix}
+            // GSAP animates the outer element; the CSS hover lift lives on the
+            // inner one so the two never fight over the same transform.
+            <div key={s.label} data-stat>
+              <div
+                className={`card flex h-full flex-col justify-between gap-10 p-6 transition-transform duration-300 hover:-translate-y-1.5 ${CARD_STYLES[i % 4]}`}
+              >
+                <span className="text-xs font-extrabold tracking-[0.08em] uppercase opacity-80">{s.note}</span>
+                <div>
+                  <div className="display text-7xl tabular-nums">
+                    <span data-count={s.value} data-decimals={s.decimals}>
+                      {format(s.value, s.decimals)}
+                    </span>
+                    {s.suffix}
+                  </div>
+                  <p className="mt-2 text-sm font-semibold">{s.label}</p>
                 </div>
-                <p className="mt-2 text-sm font-semibold">{s.label}</p>
               </div>
             </div>
           ))}
