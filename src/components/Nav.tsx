@@ -119,10 +119,10 @@ export function Nav() {
           <a
             href="#hero"
             onClick={(e) => go(e, 'hero')}
-            className="display grid size-12 shrink-0 place-items-center rounded-full border-2 border-ink bg-indigo text-xl text-paper shadow-[3px_3px_0_var(--color-ink)] transition-transform hover:-rotate-12 lg:justify-self-start"
+            className="grid size-14 shrink-0 place-items-center transition-transform hover:-rotate-6 lg:justify-self-start"
             aria-label={`${profile.name} — back to top`}
           >
-            FP
+            <img src="/brand/logo-192.png" alt="" width={56} height={56} className="size-14 select-none" draggable={false} />
           </a>
 
           <ul className="relative hidden items-center rounded-full border-2 border-ink bg-cream p-1.5 shadow-[4px_4px_0_var(--color-ink)] lg:flex">

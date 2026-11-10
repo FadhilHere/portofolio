@@ -1,10 +1,10 @@
 import { useRef } from 'react'
 import { finePointer, gsap, reducedMotion, useGSAP } from '../lib/motion'
 import { scrollToTarget } from '../lib/scroll'
+import { DeskFigure } from '../figures/DeskFigure'
 import { profile } from '../data/resume'
 import { Magnetic } from '../components/Magnetic'
 import { Sticker } from '../components/Sticker'
-import { ScrollBadge } from '../components/ScrollBadge'
 import { SectionShell } from '../components/SectionShell'
 
 function Letters({ text }: { text: string }) {
@@ -72,7 +72,6 @@ export function Hero({ ready }: { ready: boolean }) {
       })
       tl.from('[data-hero-sticker]', { scale: 0, rotate: -30, duration: 0.9, ease: 'back.out(2.5)', stagger: 0.1 }, 0.35)
         .from('[data-hero-fade]', { y: 30, autoAlpha: 0, duration: 1, stagger: 0.08 }, 0.55)
-        .from('[data-hero-badge]', { scale: 0, rotate: 120, duration: 1.1, ease: 'back.out(1.8)' }, 0.8)
     },
     { scope: root, dependencies: [ready] },
   )
@@ -122,7 +121,7 @@ export function Hero({ ready }: { ready: boolean }) {
             </span>
           </div>
 
-          <h1 className="display text-[clamp(5rem,26vw,17rem)] leading-[0.84]!">
+          <h1 className="display text-[clamp(5rem,26vw,17rem)] leading-[0.84]! lg:text-[clamp(5rem,14.5vw,15rem)]">
             <span className="sr-only">{profile.name}</span>
             <span aria-hidden="true" className="block">
               <span data-hero-line className="block overflow-hidden whitespace-nowrap">
@@ -165,8 +164,11 @@ export function Hero({ ready }: { ready: boolean }) {
           </div>
         </div>
 
-        <div data-hero-badge className="absolute top-28 right-[clamp(1rem,4vw,3rem)] hidden lg:block">
-          <ScrollBadge target="#about" />
+        {/* The desk figure: right of the name on wide screens, under the buttons on narrow ones. */}
+        <div className="container-x mt-12 lg:absolute lg:top-28 lg:right-0 lg:mt-0 lg:w-[min(40vw,560px)]">
+          <div data-hero-fade>
+            <DeskFigure />
+          </div>
         </div>
       </div>
     </SectionShell>

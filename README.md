@@ -1,8 +1,8 @@
 # Fadhil Parmata — Portfolio
 
-Motion-graphic resume site: React + TypeScript, three.js (via @react-three/fiber), GSAP (ScrollTrigger, SplitText, Flip) and Lenis smooth scroll.
+Motion-graphic resume site: React + TypeScript, GSAP (ScrollTrigger, SplitText, Flip), Lenis smooth scroll, and an interactive isometric figure in the hero built with the [Anatomy](https://github.com/wheresryan22/anatomy) kit.
 
-Look: pastel neo-brutalism. Anton for display type, Plus Jakarta Sans for text, ink borders with hard shadows, a risograph grain, and halftone-dot particles.
+Look: pastel neo-brutalism. Anton for display type, Plus Jakarta Sans for text, ink borders with hard shadows.
 
 ## Run
 
@@ -24,21 +24,20 @@ All text lives in [`src/data/resume.ts`](src/data/resume.ts) — profile, stats,
 | `src/sections/*` | One component per page section (Hero → Contact) |
 | `src/components/SectionShell.tsx` | Section background colour + the curtain (split / blinds / iris) that opens into it |
 | `src/components/*` | Preloader, Nav, cursor, stickers, magnetic buttons, section headings |
-| `src/index.css` | Colour tokens (`--color-*`), fonts, stickers, cards, buttons, grain |
-| `src/lib/scroll.ts` | Lenis setup, shared scroll/pointer state, section → scene mapping |
-| `src/three/shapes.ts` | Point-cloud generators (sphere, ring, helix, wave field, crystal, galaxy) |
-| `src/three/scenes.ts` | One preset per section: shape, position, scale, tilt, opacity, colour balance |
-| `src/three/shaders.ts` | Vertex/fragment shaders that morph particles between shapes |
+| `src/index.css` | Colour tokens (`--color-*`), fonts, stickers, cards, buttons |
+| `src/lib/scroll.ts` | Lenis setup, scroll locking, smooth scroll-to |
+| `src/figures/desk.ts` | The hero figure: a faceless person typing a work log at a desk, with an AI bot beside him. The log lines come from `src/data/resume.ts` |
+| `src/figures/IsoPlate.tsx` | React wrapper that renders a figure's SVG and mounts its live loop |
+| `src/iso/` | The Anatomy kit (`iso-kit.ts`, `iso.css`), MIT licensed |
 
-The 3D layer is a single fixed, transparent `<Canvas>`. It sits above the section backgrounds and below the section content. As each section scrolls into view, the particle cloud morphs to that section's shape. To change what a section looks like in 3D (shape, position, dot colours), edit its row in `scenes.ts`. The order must match `SECTION_IDS` in `lib/scroll.ts`.
+The hero figure is static SVG built once with the Anatomy kit; only the hands, the bot, the beam and the screen text move, written straight to the DOM each frame. It stops when offscreen. To change what gets typed, edit `LOG` in `src/figures/desk.ts`.
 
 To recolour the site, change the tokens at the top of `src/index.css`. Each section passes its own colour and the previous section's colour to `SectionShell`.
 
 ## Accessibility & performance
 
-- `prefers-reduced-motion`: no smooth scroll, no text/entrance animations, no idle drift or pointer effects.
-- Phones and narrow screens use fewer particles and a centred, dimmed cloud.
-- The three.js chunk is lazy-loaded; `PerformanceMonitor` drops the pixel ratio if FPS falls.
+- `prefers-reduced-motion`: no smooth scroll, no text/entrance animations, no pointer effects; the hero figure shows the full log, still.
+- The hero figure is keyboard-focusable: right arrow finishes the current line, left arrow retypes it.
 
 ## Deploy
 

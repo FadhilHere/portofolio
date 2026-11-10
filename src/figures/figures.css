@@ -1,0 +1,84 @@
+/* Anatomy figures in the portfolio's palette: cream paper, ink lines,
+   one indigo accent, and the site's hard-shadow card frame. */
+.iso.fig-theme[data-theme='light'] {
+  --anatomy-page: var(--color-paper);
+  --anatomy-card: var(--color-cream);
+  --anatomy-paper: var(--color-cream);
+  --anatomy-text: var(--color-muted);
+  --anatomy-strong: var(--color-ink);
+  --anatomy-muted: #8a86a0;
+  --anatomy-face: #ffffff;
+  --anatomy-top: #fffefb;
+  --anatomy-shade-0: #e2ddd0;
+  --anatomy-shade-1: #eae6da;
+  --anatomy-shade-2: #f1ede3;
+  --anatomy-shade-3: #f7f4ec;
+  --anatomy-lit-top: #eeedff;
+  --anatomy-lit-shade: #e3e1ff;
+  --anatomy-hi: var(--color-ink);
+  --anatomy-mid: #6c6886;
+  --anatomy-lo: #a19db4;
+  --anatomy-faint: #cdc9d8;
+  --anatomy-weight: 0.75px;
+  --anatomy-lit: var(--color-indigo);
+  --anatomy-halo: #8a7f6a;
+  --anatomy-halo-opacity: 0.28;
+  --anatomy-dot: var(--color-ink);
+  --anatomy-green: #18a058;
+  --anatomy-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+.fig-theme.iso-figure {
+  margin: 0;
+}
+.fig-theme .iso-plate {
+  border: 2px solid var(--color-ink);
+  border-radius: 1.25rem;
+  box-shadow: 6px 6px 0 var(--color-ink);
+  padding: 44px 18px;
+}
+.fig-theme .iso-plate-corners {
+  inset: 16px 18px;
+}
+.fig-theme .iso-plate-corner {
+  font-size: 10px;
+}
+.fig-theme .iso-stage {
+  outline: none;
+  border-radius: 0.75rem;
+  touch-action: pan-y;
+}
+.fig-theme .iso-stage:focus-visible {
+  outline: 1px solid var(--anatomy-muted);
+  outline-offset: 6px;
+}
+.fig-theme .iso-legend {
+  font-size: 12.5px;
+  color: var(--color-muted);
+}
+
+/* Status LEDs: colour is the subject here. */
+.fig-theme [data-led] circle {
+  transition: fill 0.25s, opacity 0.25s;
+}
+.fig-theme [data-led][data-on] circle {
+  fill: var(--anatomy-green);
+  opacity: 1;
+}
+
+@media (max-width: 560px) {
+  .fig-theme .iso-plate {
+    padding: 40px 8px 56px;
+  }
+  .fig-theme .iso-plate-corner[data-corner='hint'] {
+    bottom: 16px;
+  }
+}
+
+/* Bare figure: the drawing sits straight on the section, no card around it. */
+.fig-bare.iso-figure {
+  background: none;
+}
+.fig-bare .iso-svg {
+  overflow: visible;
+}

@@ -21,9 +21,7 @@ const SLATS = 6
 /**
  * Stacking order, bottom to top:
  *   section background + curtain (z -10, painted in the root stacking context)
- *   fixed WebGL particles (z 0)
  *   section content (z 10)
- * For that to work, neither <main> nor <section> may create a stacking context.
  */
 export function SectionShell({ id, bg, prev, curtain, openAt = 'top 30%', className = '', children }: Props) {
   const root = useRef<HTMLElement>(null)

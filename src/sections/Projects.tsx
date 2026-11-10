@@ -134,7 +134,7 @@ export function Projects() {
     flipState.current = null
     const el = grid.current!
     // Ease the grid between its old and new height so the sections below glide
-    // instead of jumping, then re-measure every trigger (and the 3D scene map).
+    // instead of jumping, then re-measure every trigger.
     gsap.fromTo(
       el,
       { height: state.height },

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>Fadhil Parmata — Sapling F</title>
+  <!-- A sapling drawn as the letter F: the stem is the F's upright, two leaves its arms. -->
+  <rect x="96" y="96" width="832" height="832" rx="210" fill="#ecfdf5"/>
+  <g transform="translate(-40 10)">
+    <!-- ground -->
+    <rect x="300" y="788" width="232" height="38" rx="19" fill="#065f46"/>
+    <!-- stem -->
+    <rect x="380" y="246" width="72" height="572" rx="36" fill="#065f46"/>
+    <!-- top leaf: the F's top bar -->
+    <path d="M416 292 C520 168 684 168 772 240 C684 322 520 342 416 292 Z" fill="#10b981"/>
+    <path d="M448 288 C560 254 664 244 744 240" fill="none" stroke="#ecfdf5" stroke-width="14" stroke-linecap="round"/>
+    <!-- middle leaf: the F's middle bar -->
+    <path d="M416 524 C500 430 624 430 688 490 C620 552 500 570 416 524 Z" fill="#10b981"/>
+    <path d="M446 520 C536 494 608 488 664 488" fill="none" stroke="#ecfdf5" stroke-width="12" stroke-linecap="round"/>
+    <!-- a gold bud on the tip of the top leaf -->
+    <circle cx="800" cy="228" r="34" fill="#e0a31a"/>
+  </g>
+</svg>

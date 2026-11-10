@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>Fadhil Parmata — Leaf F</title>
+  <!-- One leaf; its veins, left as negative space, are the letter F. -->
+  <defs>
+    <clipPath id="leaf"><path d="M512 150 C724 232 792 520 512 856 C232 520 300 232 512 150 Z"/></clipPath>
+  </defs>
+  <rect x="96" y="96" width="832" height="832" rx="210" fill="#ecfdf5"/>
+  <!-- gold stalk -->
+  <path d="M512 840 L512 892" stroke="#e0a31a" stroke-width="36" stroke-linecap="round"/>
+  <!-- the leaf, two flat tones split along the midrib -->
+  <path d="M512 150 C724 232 792 520 512 856 C232 520 300 232 512 150 Z" fill="#047857"/>
+  <rect x="488" y="140" width="340" height="740" fill="#10b981" clip-path="url(#leaf)"/>
+  <!-- veins: the F -->
+  <g fill="none" stroke="#ecfdf5" stroke-width="54" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M488 724 L488 300"/>
+    <path d="M488 300 L640 300"/>
+    <path d="M488 492 L632 492"/>
+  </g>
+</svg>

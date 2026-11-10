@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <title>Fadhil Parmata — Monoline F</title>
+  <!-- One stroke weight: a trunk that branches into the F's two arms, each bearing gold fruit. -->
+  <rect x="96" y="96" width="832" height="832" rx="210" fill="#065f46"/>
+  <g transform="translate(-28 -14)" fill="none" stroke="#fffcf5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M392 782 L392 336 Q392 282 446 282 L684 282" stroke-width="84"/>
+    <path d="M392 524 L596 524" stroke-width="84"/>
+    <path d="M392 782 Q344 800 304 838 M392 782 Q440 800 480 838" stroke-width="34"/>
+    <circle cx="724" cy="282" r="62" fill="#e0a31a" stroke="none"/>
+    <circle cx="632" cy="524" r="48" fill="#e0a31a" stroke="none"/>
+  </g>
+</svg>
