@@ -39,7 +39,7 @@ export const proofs = [
     role: 'Software Engineer',
     period: 'Mar 2026 — Jun 2026',
     built: 'Built an academic recognition system for 5 user roles, each with its own dashboard and workflow.',
-    result: 'Sole developer from the first requirements meeting to production at rpl.pocari.id.',
+    result: 'Sole developer from the first requirements meeting to production at rpl.pcr.ac.id.',
   },
 ]
 
@@ -80,7 +80,7 @@ export const experience: Experience[] = [
       'Used an AI-augmented workflow (Claude Code, GitHub Copilot, Google Antigravity) to compress a multi-developer project into a solo build without sacrificing clean architecture.',
     ],
     stack: ['Full-stack', 'System Design', 'AI-assisted dev'],
-    link: { label: 'rpl.pocari.id', href: 'https://rpl.pocari.id' },
+    link: { label: 'rpl.pcr.ac.id', href: 'https://rpl.pcr.ac.id' },
   },
   {
     company: 'PT Kilang Pertamina Internasional RU II Dumai',
