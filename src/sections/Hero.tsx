@@ -109,8 +109,11 @@ export function Hero({ ready }: { ready: boolean }) {
   return (
     <SectionShell id="hero" bg="var(--color-paper)">
       <div ref={root} className="relative flex min-h-svh flex-col justify-end pt-32 pb-[8vh]">
-        <div className="container-x">
-          <div className="mb-6 flex flex-wrap items-center gap-3">
+        {/* Grid: on wide screens the desk figure fills the space right of the
+            name, flush with the content edge and sitting on the name's baseline.
+            On narrow screens it drops below the buttons. */}
+        <div className="container-x grid lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-x-12">
+          <div className="mb-6 flex flex-wrap items-center gap-3 lg:col-start-1 lg:row-start-1">
             <span data-hero-sticker className="inline-block">
               <Sticker bg="var(--color-butter)" tilt={-3}>
                 Now — {profile.current}
@@ -121,7 +124,7 @@ export function Hero({ ready }: { ready: boolean }) {
             </span>
           </div>
 
-          <h1 className="display text-[clamp(5rem,26vw,17rem)] leading-[0.84]! lg:text-[clamp(5rem,14.5vw,15rem)]">
+          <h1 className="display text-[clamp(5rem,26vw,17rem)] leading-[0.84]! lg:col-start-1 lg:row-start-2 lg:text-[clamp(5rem,14.5vw,15rem)]">
             <span className="sr-only">{profile.name}</span>
             <span aria-hidden="true" className="block">
               <span data-hero-line className="block overflow-hidden whitespace-nowrap">
@@ -133,7 +136,7 @@ export function Hero({ ready }: { ready: boolean }) {
             </span>
           </h1>
 
-          <div className="mt-8 grid items-end gap-8 md:grid-cols-12">
+          <div className="mt-8 grid items-end gap-8 md:grid-cols-12 lg:col-span-2 lg:row-start-3">
             <div className="md:col-span-7 lg:col-span-6">
               <p data-hero-fade className="text-xl font-bold md:text-2xl">
                 {profile.role} <RotatingWord words={profile.disciplines} />
@@ -162,11 +165,11 @@ export function Hero({ ready }: { ready: boolean }) {
               </Magnetic>
             </div>
           </div>
-        </div>
 
-        {/* The desk figure: right of the name on wide screens, under the buttons on narrow ones. */}
-        <div className="container-x mt-12 lg:absolute lg:top-28 lg:right-0 lg:mt-0 lg:w-[min(40vw,560px)]">
-          <div data-hero-fade>
+          <div
+            data-hero-fade
+            className="order-last mt-12 w-full max-w-[560px] lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:max-w-[520px] lg:self-end lg:justify-self-end"
+          >
             <DeskFigure />
           </div>
         </div>
