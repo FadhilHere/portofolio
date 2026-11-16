@@ -12,17 +12,35 @@ export const profile = {
   whatsapp: 'https://wa.me/6285156396190',
   linkedin: 'https://www.linkedin.com/in/fadhil-parmata-2599a0310',
   cv: '/CV_FadhilParmata.pdf',
-  current: 'Software Engineer at IATMI',
+  current: 'Full-stack Engineer at IATMI',
   tagline:
     'Full-stack engineer who ships end-to-end — from requirements and system design to production servers — across web, data, and AI.',
   disciplines: ['Full-stack', 'AI / ML', 'Data & BI', 'UI / UX'],
 }
 
-export const stats = [
-  { value: 3.94, decimals: 2, suffix: '', label: 'CGPA out of 4.00', note: 'Bachelor of Information System' },
-  { value: 100, decimals: 0, suffix: '%', label: 'Intern records digitised', note: 'At Pertamina RU II Dumai' },
-  { value: 83.72, decimals: 2, suffix: '', label: 'System Usability Scale', note: 'Raised from 78.7 in 3 iterations' },
-  { value: 20, decimals: 0, suffix: '+', label: 'Tenant teams on my Expo platform', note: 'Rp 5M+ live transactions' },
+// Proof cards under the About statement — one per place named in it.
+export const proofs = [
+  {
+    org: 'Pertamina RU II',
+    role: 'Software Engineer Intern',
+    period: 'Oct 2024 — Jan 2025',
+    built: 'Built the IT internship management system from scratch in ASP.NET Core 8.',
+    result: 'Intern intake moved fully off paper. The IT team took it over with zero support tickets after launch.',
+  },
+  {
+    org: 'IATMI',
+    role: 'Full-stack Engineer',
+    period: 'Jul 2026 — Present',
+    built: "Build and run IATMI's web systems end to end — front end, back end, web server, mail server, and CI/CD.",
+    result: 'One engineer covering both development and DevOps for a national professional association.',
+  },
+  {
+    org: 'Politeknik Caltex Riau',
+    role: 'Software Engineer',
+    period: 'Mar 2026 — Jun 2026',
+    built: 'Built an academic recognition system for 5 user roles, each with its own dashboard and workflow.',
+    result: 'Sole developer from the first requirements meeting to production at rpl.pocari.id.',
+  },
 ]
 
 export type Experience = {
@@ -40,15 +58,16 @@ export const experience: Experience[] = [
   {
     company: 'IATMI — Ikatan Ahli Teknik Perminyakan Indonesia',
     short: 'IATMI',
-    role: 'Software Engineer',
+    role: 'Full-stack Engineer',
     period: 'Jul 2026 — Present',
     context: 'Professional association of Indonesian petroleum engineering experts',
     points: [
-      'Gathered requirements across divisions and mapped business flows to redesign the website UX for Simposium IATMI XVIII 2026, a national petroleum engineering symposium.',
-      'Managed and troubleshot production infrastructure independently: mail server, web server, and CI/CD pipeline.',
-      'Delivered the full-stack implementation with React on the front end and Node.js/Express on the back end.',
+      "Own IATMI's web systems end to end as the only engineer: development, servers, and deployments.",
+      'Build the front end in React and the back end in Node.js and Express.',
+      'Set up and run production myself: web server, mail server, CI/CD pipeline, and DevOps.',
+      'Gathered requirements from each division and redesigned the UX of the Simposium IATMI XVIII 2026 website, a national petroleum engineering symposium.',
     ],
-    stack: ['React', 'Node.js', 'Express', 'CI/CD', 'Linux'],
+    stack: ['React', 'Node.js', 'Express', 'Linux', 'CI/CD', 'Mail server'],
   },
   {
     company: 'Politeknik Caltex Riau',

@@ -1,21 +1,14 @@
 import { useRef } from 'react'
 import { gsap, reducedMotion, SplitText, useGSAP } from '../lib/motion'
-import { education, spokenLanguages, stats } from '../data/resume'
+import { education, proofs, spokenLanguages } from '../data/resume'
 import { SectionHeading } from '../components/SectionHeading'
 import { SectionShell } from '../components/SectionShell'
 
 const STATEMENT =
   "I'm a software engineer from Riau, Indonesia who owns the whole build — from the first requirements meeting to the production server. I've shipped systems for one of Indonesia's largest refineries, a national petroleum engineering association, and my own campus, often as the sole developer."
 
-// Each stat card gets its own printed colour.
-const CARD_STYLES = [
-  'bg-cream',
-  'bg-tomato',
-  'bg-cream',
-  'bg-indigo text-paper',
-]
-
-const format = (v: number, decimals: number) => v.toFixed(decimals)
+// Each proof card gets its own printed colour.
+const CARD_STYLES = ['bg-cream', 'bg-tomato', 'bg-indigo text-paper']
 
 export function About() {
   const root = useRef<HTMLDivElement>(null)
@@ -41,26 +34,12 @@ export function About() {
           ),
       })
 
-      gsap.utils.toArray<HTMLElement>('[data-count]').forEach((el) => {
-        const target = Number(el.dataset.count)
-        const decimals = Number(el.dataset.decimals)
-        const obj = { v: 0 }
-        el.textContent = format(0, decimals)
-        gsap.to(obj, {
-          v: target,
-          duration: 2,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 88%' },
-          onUpdate: () => (el.textContent = format(obj.v, decimals)),
-        })
-      })
-
       // Cards get tossed onto the page at slightly different angles. Explicit
       // end values + clearProps guarantee they always land flat, whatever
       // happens mid-flight (refreshes, re-renders).
       gsap.fromTo(
         '[data-stat]',
-        { y: 120, rotate: (i) => [-8, 6, -5, 9][i % 4], autoAlpha: 0 },
+        { y: 120, rotate: (i) => [-8, 6, -5][i % 3], autoAlpha: 0 },
         {
           y: 0,
           rotate: 0,
@@ -69,7 +48,7 @@ export function About() {
           ease: 'back.out(1.4)',
           stagger: 0.1,
           clearProps: 'transform,opacity,visibility',
-          scrollTrigger: { trigger: '[data-stats]', start: 'top 85%', once: true },
+          scrollTrigger: { trigger: '[data-proofs]', start: 'top 85%', once: true },
         },
       )
       gsap.fromTo(
@@ -108,24 +87,24 @@ export function About() {
           {STATEMENT}
         </p>
 
-        <div data-stats className="mt-24 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s, i) => (
+        <div data-proofs className="mt-24 grid gap-5 md:grid-cols-3">
+          {proofs.map((p, i) => (
             // GSAP animates the outer element; the CSS hover lift lives on the
             // inner one so the two never fight over the same transform.
-            <div key={s.label} data-stat>
+            <div key={p.org} data-stat>
               <div
-                className={`card flex h-full flex-col justify-between gap-10 p-6 transition-transform duration-300 hover:-translate-y-1.5 ${CARD_STYLES[i % 4]}`}
+                className={`card flex h-full flex-col gap-6 p-7 transition-transform duration-300 hover:-translate-y-1.5 ${CARD_STYLES[i % 3]}`}
               >
-                <span className="text-xs font-extrabold tracking-[0.08em] uppercase opacity-80">{s.note}</span>
                 <div>
-                  <div className="display text-7xl tabular-nums">
-                    <span data-count={s.value} data-decimals={s.decimals}>
-                      {format(s.value, s.decimals)}
-                    </span>
-                    {s.suffix}
-                  </div>
-                  <p className="mt-2 text-sm font-semibold">{s.label}</p>
+                  <p className="display text-4xl leading-none">{p.org}</p>
+                  <p className="mt-3 text-sm font-semibold opacity-75">
+                    {p.role} · {p.period}
+                  </p>
                 </div>
+                <p className="text-lg leading-snug font-bold">{p.built}</p>
+                <p className="mt-auto border-t-2 border-current/20 pt-4 text-sm leading-relaxed font-semibold">
+                  {p.result}
+                </p>
               </div>
             </div>
           ))}
@@ -140,6 +119,7 @@ export function About() {
           <div className="md:col-span-3">
             <p className="text-xs font-extrabold tracking-[0.08em] text-muted uppercase">Period</p>
             <p className="mt-2 font-bold">{education.period}</p>
+            <p className="mt-1 font-bold">GPA {education.gpa}</p>
           </div>
           <div className="md:col-span-4">
             <p className="text-xs font-extrabold tracking-[0.08em] text-muted uppercase">Languages</p>
