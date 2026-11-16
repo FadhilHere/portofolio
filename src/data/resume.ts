@@ -12,7 +12,7 @@ export const profile = {
   whatsapp: 'https://wa.me/6285156396190',
   linkedin: 'https://www.linkedin.com/in/fadhil-parmata-2599a0310',
   cv: '/CV_FadhilParmata.pdf',
-  current: 'Full-stack Engineer at IATMI',
+  current: 'Full-stack Engineer @ IATMI',
   tagline:
     'Full-stack engineer who ships end-to-end — from requirements and system design to production servers — across web, data, and AI.',
   disciplines: ['Full-stack', 'AI / ML', 'Data & BI', 'UI / UX'],

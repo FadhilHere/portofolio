@@ -113,7 +113,7 @@ export function Hero({ ready }: { ready: boolean }) {
           <div className="mb-6 flex flex-wrap items-center gap-3">
             <span data-hero-sticker className="inline-block">
               <Sticker bg="var(--color-butter)" tilt={-3}>
-                Now — {profile.role} @ IATMI
+                Now — {profile.current}
               </Sticker>
             </span>
             <span data-hero-sticker className="inline-block">

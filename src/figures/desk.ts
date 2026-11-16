@@ -12,23 +12,22 @@
  */
 import * as k from '../iso/iso-kit'
 import type { Flat, Plan, Plane, Point3, SolidPaths } from '../iso/iso-kit'
-import { experience, stats } from '../data/resume'
+import { education, experience, projects } from '../data/resume'
 
 export const WIDTH = 560
 export const HEIGHT = 420
 
 // ---------- What gets typed: true lines from the resume ----------
 const job = (short: string) => experience.find((e) => e.short === short)
-const stat = (label: string) => stats.find((s) => s.label.includes(label))
-const sus = stat('Usability')
+const project = (title: string) => projects.find((p) => p.title.includes(title))
 export const LOG: { text: string; tag: string }[] = [
   { text: `${job('IATMI')?.short} · ${job('IATMI')?.role}`, tag: 'IATMI · now' },
   { text: 'PCR · 5 user roles shipped', tag: 'PCR · 2026' },
-  { text: `Expo · ${stat('Tenant')?.value}${stat('Tenant')?.suffix} tenant teams`, tag: 'Expo platform' },
-  { text: `SUS 78.7 → ${sus?.value.toFixed(2)}`, tag: 'usability' },
-  { text: `Pertamina · ${stat('Intern')?.value}${stat('Intern')?.suffix} digitised`, tag: 'Pertamina RU II' },
+  { text: 'Expo · 20+ tenant teams', tag: 'Expo platform' },
+  { text: `${project('SPMI')?.metric}`, tag: 'usability' },
+  { text: 'Pertamina · intern system live', tag: 'Pertamina RU II' },
   { text: `Assist.id · backend ${job('Assist.id')?.period.slice(-4)}`, tag: 'Assist.id' },
-  { text: `CGPA ${stat('CGPA')?.value.toFixed(2)} / 4.00`, tag: 'CGPA' },
+  { text: `CGPA ${education.gpa}`, tag: 'CGPA' },
 ]
 
 // ---------- World layout (units ≈ cm) ----------
