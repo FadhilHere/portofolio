@@ -168,7 +168,7 @@ export function Hero({ ready }: { ready: boolean }) {
 
           <div
             data-hero-fade
-            className="order-last mt-12 w-full max-w-[560px] lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:max-w-[520px] lg:self-end lg:justify-self-end"
+            className="order-last mt-12 w-full max-w-[560px] lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:w-[min(max(100%,26vw),480px)] lg:max-w-none lg:self-end lg:justify-self-end"
           >
             <DeskFigure />
           </div>
